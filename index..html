@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jebol V2L Akun ML</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+
+    img.logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #1e1e1e;
+      border: 1px solid #444;
+      color: white;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #00c853;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.2s ease;
+      transform: scale(1);
+    }
+
+    button:hover {
+      background-color: #00b34a;
+      transform: scale(1.03);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .admin-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      color: #00e676;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .admin-link img {
+      width: 20px;
+      margin-right: 8px;
+    }
+
+    .loading-text {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #cccccc;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo MLBB -->
+  <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Mobile_Legends_Bang_Bang_logo.png" alt="Logo MLBB" class="logo">
+
+  <h1>Jebol V2L Akun ML</h1>
+
+  <form id="jebolForm">
+    <div class="form-group">
+      <label for="id">ID ML</label>
+      <input type="text" id="id" name="id" placeholder="Masukkan ID Mobile Legends" />
+    </div>
+
+    <div class="form-group">
+      <label for="server">Server</label>
+      <input type="text" id="server" name="server" placeholder="Contoh: 2207" />
+    </div>
+
+    <div class="form-group">
+      <label for="level">Level Akun</label>
+      <select id="level" name="level">
+        <option value="">Pilih Level</option>
+        <option value="1-30">1 - 30</option>
+        <option value="31-60">31 - 60</option>
+        <option value="61-99">61 - 99</option>
+        <option value="100+">100+</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="skin">Jumlah Skin</label>
+      <select id="skin" name="skin">
+        <option value="">Pilih Jumlah Skin</option>
+        <option value="0-20">0 - 20</option>
+        <option value="21-50">21 - 50</option>
+        <option value="51-100">51 - 100</option>
+        <option value="100+">100+</option>
+      </select>
+    </div>
+
+    <button type="submit" id="submitBtn">JEBOL SEKARANG</button>
+    <div class="loading-text" id="loadingText">⏳ Sedang memproses... tunggu sebentar</div>
+  </form>
+
+  <!-- Link ke Admin -->
+  <a href="https://wa.me/628988967496" class="admin-link" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" />
+    Lanjutkan ke Admin
+  </a>
+
+  <script>
+    document.getElementById("jebolForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const id = document.getElementById("id").value.trim();
+      const server = document.getElementById("server").value.trim();
+      const level = document.getElementById("level").value;
+      const skin = document.getElementById("skin").value;
+      const loadingText = document.getElementById("loadingText");
+      const submitBtn = document.getElementById("submitBtn");
+
+      if (!id || !server || !level || !skin) {
+        alert("Harap isi semua data terlebih dahulu!");
+        return;
+      }
+
+      // Tampilkan loading
+      loadingText.style.display = "block";
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Memproses...";
+
+      const pesan = `Halo Admin, saya ingin jebol akun V2L ML:\n\nID: ${id}\nServer: ${server}\nLevel: ${level}\nSkin: ${skin}`;
+      const nomor = "628988967496";
+      const linkWa = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+
+      // Simulasikan proses 1.5 detik lalu redirect
+      setTimeout(() => {
+        window.location.href = linkWa;
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
